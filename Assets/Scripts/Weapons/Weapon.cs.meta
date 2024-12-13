@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 213d5c7fd3c2ecf4f8a0d6e625545519
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bulletPrefab: {fileID: -1923472872077545086, guid: eaafe922b9054384a91c403d24b10793,
+      type: 3}
+  - casingPrefab: {fileID: 7777787870254115567, guid: 3dd5974a4309810439bc05c1c9a79c11,
+      type: 3}
+  - muzzleFlashPrefab: {fileID: 1782395880954752, guid: 3dd9cf2e209c504448f1c4c6835675cf,
+      type: 3}
+  - gunAnimator: {instanceID: 0}
+  - barrelLocation: {instanceID: 0}
+  - casingExitLocation: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
