@@ -15,11 +15,14 @@ public class GunAttachmentSystem : MonoBehaviour
 
     public bool Attach(GameObject attachment)
     {
+        // Get the Attachment component
         Attachment attachmentComponent = attachment.GetComponent<Attachment>();
         if (attachmentComponent == null) return false;
 
+        // Iterate through attachment points
         foreach (var point in attachmentPoints)
         {
+            // Check for a matching type and an empty slot
             if (point.allowedType == attachmentComponent.attachmentType && point.currentAttachment == null)
             {
                 // Snap the attachment
@@ -27,11 +30,22 @@ public class GunAttachmentSystem : MonoBehaviour
                 attachment.transform.localPosition = Vector3.zero;
                 attachment.transform.localRotation = Quaternion.identity;
 
+                // Assign the current attachment to the point
                 point.currentAttachment = attachment;
+
+                // Disable Rigidbody for proper snapping
+                Rigidbody rb = attachment.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = true;
+                    rb.useGravity = false;
+                }
+
                 return true;
             }
         }
 
+        // Return false if no valid point was found
         return false;
     }
 
