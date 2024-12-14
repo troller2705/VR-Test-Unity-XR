@@ -128,6 +128,43 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1301516680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &160836581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4142770108997496143, guid: db64f49d6bb64a14ab3ddbb4a75f1541,
+    type: 3}
+  m_PrefabInstance: {fileID: 792386315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &160836582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160836581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3714f51abee679419242c2a4b8c78bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachmentPoints:
+  - pointName: Scope
+    mountPoint: {fileID: 442253315}
+    allowedType: 0
+    currentAttachment: {fileID: 0}
+  - pointName: Barrel
+    mountPoint: {fileID: 959619731}
+    allowedType: 1
+    currentAttachment: {fileID: 0}
+  - pointName: Grip
+    mountPoint: {fileID: 1006566542}
+    allowedType: 2
+    currentAttachment: {fileID: 0}
+--- !u!4 &160836588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4140564521841985915, guid: db64f49d6bb64a14ab3ddbb4a75f1541,
+    type: 3}
+  m_PrefabInstance: {fileID: 792386315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &192586679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,6 +239,37 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1301516680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &442253314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442253315}
+  m_Layer: 0
+  m_Name: Scope
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442253315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442253314}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.089, y: 0.204, z: 0.033}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 160836588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &508726521 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3127728407087826080, guid: 895f6f3c2d334633b5800312285058d2,
@@ -501,8 +569,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4140564521841985915, guid: db64f49d6bb64a14ab3ddbb4a75f1541,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 442253315}
+    - targetCorrespondingSourceObject: {fileID: 4140564521841985915, guid: db64f49d6bb64a14ab3ddbb4a75f1541,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 959619731}
+    - targetCorrespondingSourceObject: {fileID: 4140564521841985915, guid: db64f49d6bb64a14ab3ddbb4a75f1541,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1006566542}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4142770108997496143, guid: db64f49d6bb64a14ab3ddbb4a75f1541,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 160836582}
   m_SourcePrefab: {fileID: 100100000, guid: db64f49d6bb64a14ab3ddbb4a75f1541, type: 3}
 --- !u!1 &881454605
 GameObject:
@@ -781,6 +865,68 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &959619730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 959619731}
+  m_Layer: 0
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &959619731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959619730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.143, z: 0.657}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 160836588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1006566541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1006566542}
+  m_Layer: 0
+  m_Name: Grip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1006566542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006566541}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.11, z: 0.268}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 160836588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1094395505 stripped
 Transform:
