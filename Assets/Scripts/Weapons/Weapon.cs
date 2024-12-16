@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
 
     [Header("Location Refrences")]
     [SerializeField] protected Animator gunAnimator;
-    [SerializeField] protected Transform barrelLocation;
+    [SerializeField] public Transform barrelLocation;
     [SerializeField] protected Transform casingExitLocation;
 
     [Header("Settings")]
@@ -50,6 +50,11 @@ public class Weapon : MonoBehaviour
 
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
+
+        if (GetComponentInChildren<GunAttachmentSystem>().attachmentPoints[2].currentAttachment != null)
+        {
+            barrelLocation.position = barrelLocation.position + GetComponentInChildren<GunAttachmentSystem>().attachmentPoints[2].currentAttachment.GetComponent<Mesh>().bounds.size;
+        }
     }
 
     [System.Obsolete]

@@ -13,6 +13,7 @@ public class GunAttachmentSystem : MonoBehaviour
     }
 
     public AttachmentPoint[] attachmentPoints;
+    public Transform grip2;
 
     public bool Attach(GameObject attachment)
     {
@@ -66,6 +67,16 @@ public class GunAttachmentSystem : MonoBehaviour
                 // Assign the current attachment to the point
                 point.currentAttachment = attachment;
                 Debug.Log("Attachment Set");
+
+                if (attachmentComponent.attachmentType == Attachment.AttachmentType.Barrel)
+                {
+                    GetComponentInChildren<Weapon>().barrelLocation.position = GetComponentInChildren<Weapon>().barrelLocation.position + attachmentComponent.GetComponent<Mesh>().bounds.size;
+                }
+                if (attachmentComponent.attachmentType == Attachment.AttachmentType.Grip)
+                {
+                    grip2.position = attachmentComponent.transform.position;
+                    grip2.rotation = attachmentComponent.transform.rotation;
+                }
 
                 return true;
             }
