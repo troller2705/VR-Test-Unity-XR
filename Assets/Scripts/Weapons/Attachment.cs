@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mail;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Attachment : MonoBehaviour
 {
     public enum AttachmentType { Scope, Barrel, Grip }
     public AttachmentType attachmentType;
-    public Rigidbody rb;
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"Collision detected with {other.name}");
         GunAttachmentSystem gun = other.GetComponentInParent<GunAttachmentSystem>();
-        if (gun != null)
+        if (gun != null && !gameObject.GetComponent<XRGrabInteractable>().isSelected)
         {
-            Debug.Log($"Attachment {gameObject.name} entered snapping zone.");
-            gun.Attach(gameObject);
-            rb = GetComponent<Rigidbody>();
-            rb.useGravity = false;
-            rb.isKinematic = true;
+            bool attached = gun.Attach(gameObject);
+            if (attached)
+            {
+                Debug.Log($"{gameObject.name} successfully attached.");
+            }
+            else
+            {
+                Debug.LogWarning($"{gameObject.name} could not attach.");
+            }
         }
     }
-
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GunAttachmentSystem : MonoBehaviour
 {
@@ -29,9 +30,35 @@ public class GunAttachmentSystem : MonoBehaviour
             // Check for a matching type and an empty slot
             if (point.allowedType == attachmentComponent.attachmentType && point.currentAttachment == null)
             {
+                // Disable Rigidbody
+                Rigidbody rb = attachment.GetComponent<Rigidbody>();
+                BoxCollider collider = attachment.GetComponent<BoxCollider>();
+                XRGrabInteractable grabInteractable = attachment.GetComponent<XRGrabInteractable>();
+                if (rb != null)
+                {
+                    rb.isKinematic = true;
+                    rb.useGravity = false;
+                    rb.WakeUp();
+                    Debug.Log("Rigidbody Set");
+                }
+
+                // Disable Interactable Components
+                if (collider != null)
+                {
+                    collider.enabled = false;
+                    Debug.Log("Collider disabled");
+                }
+                
+                if (grabInteractable != null)
+                {
+                    grabInteractable.interactionLayerMask = LayerMask.GetMask("None"); // Prevent further grabs
+                    Debug.Log("GrabInteractable updated");
+                }
+                Debug.Log("Interactables Set");
+
                 // Snap the attachment
                 attachment.transform.SetParent(point.mountPoint);
-                Debug.Log($"Parent Set{attachment.transform.parent}");
+                Debug.Log($"Parent Set to: {attachment.transform.parent.name}");
                 attachment.transform.localPosition = Vector3.zero;
                 attachment.transform.localRotation = Quaternion.identity;
                 Debug.Log("Transforms Set");
@@ -40,20 +67,12 @@ public class GunAttachmentSystem : MonoBehaviour
                 point.currentAttachment = attachment;
                 Debug.Log("Attachment Set");
 
-                // Disable Rigidbody for proper snapping
-                Rigidbody rb = attachment.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.isKinematic = true;
-                    rb.useGravity = false;
-                    Debug.Log("Rigidbody Setting Set");
-                }
-
                 return true;
             }
         }
 
         // Return false if no valid point was found
+        Debug.LogWarning("No valid attachment point found");
         return false;
     }
 
