@@ -17,7 +17,11 @@ public class GunAttachmentSystem : MonoBehaviour
     {
         // Get the Attachment component
         Attachment attachmentComponent = attachment.GetComponent<Attachment>();
-        if (attachmentComponent == null) return false;
+        if (attachmentComponent == null)
+        {
+            Debug.Log("No Attachment script found");
+            return false;
+        }
 
         // Iterate through attachment points
         foreach (var point in attachmentPoints)
@@ -27,11 +31,14 @@ public class GunAttachmentSystem : MonoBehaviour
             {
                 // Snap the attachment
                 attachment.transform.SetParent(point.mountPoint);
+                Debug.Log($"Parent Set{attachment.transform.parent}");
                 attachment.transform.localPosition = Vector3.zero;
                 attachment.transform.localRotation = Quaternion.identity;
+                Debug.Log("Transforms Set");
 
                 // Assign the current attachment to the point
                 point.currentAttachment = attachment;
+                Debug.Log("Attachment Set");
 
                 // Disable Rigidbody for proper snapping
                 Rigidbody rb = attachment.GetComponent<Rigidbody>();
@@ -39,6 +46,7 @@ public class GunAttachmentSystem : MonoBehaviour
                 {
                     rb.isKinematic = true;
                     rb.useGravity = false;
+                    Debug.Log("Rigidbody Setting Set");
                 }
 
                 return true;
@@ -57,6 +65,7 @@ public class GunAttachmentSystem : MonoBehaviour
             {
                 attachment.transform.SetParent(null);
                 point.currentAttachment = null;
+                Debug.Log("Attachment Detached");
                 break;
             }
         }
