@@ -14,6 +14,7 @@ public class GunAttachmentSystem : MonoBehaviour
 
     public AttachmentPoint[] attachmentPoints;
     public Transform grip2;
+    public Transform barrel;
 
     public bool Attach(GameObject attachment)
     {
@@ -33,7 +34,8 @@ public class GunAttachmentSystem : MonoBehaviour
             {
                 // Disable Rigidbody
                 Rigidbody rb = attachment.GetComponent<Rigidbody>();
-                BoxCollider collider = attachment.GetComponent<BoxCollider>();
+                BoxCollider collider1 = attachment.GetComponents<BoxCollider>()[0];
+                BoxCollider collider2 = attachment.GetComponents<BoxCollider>()[1];
                 XRGrabInteractable grabInteractable = attachment.GetComponent<XRGrabInteractable>();
                 if (rb != null)
                 {
@@ -44,9 +46,10 @@ public class GunAttachmentSystem : MonoBehaviour
                 }
 
                 // Disable Interactable Components
-                if (collider != null)
+                if (collider1 != null && collider2 != null)
                 {
-                    collider.enabled = false;
+                    collider1.enabled = false;
+                    collider2.enabled = false;
                     Debug.Log("Collider disabled");
                 }
                 
@@ -70,7 +73,7 @@ public class GunAttachmentSystem : MonoBehaviour
 
                 if (attachmentComponent.attachmentType == Attachment.AttachmentType.Barrel)
                 {
-                    GetComponentInChildren<Weapon>().barrelLocation.position = GetComponentInChildren<Weapon>().barrelLocation.position + attachmentComponent.GetComponent<Mesh>().bounds.size;
+                    barrel.localPosition = new Vector3(0.0007f, 0.1f, -0.0014f);
                 }
                 if (attachmentComponent.attachmentType == Attachment.AttachmentType.Grip)
                 {

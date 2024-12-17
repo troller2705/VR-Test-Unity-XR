@@ -50,11 +50,6 @@ public class Weapon : MonoBehaviour
 
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
-
-        if (GetComponentInChildren<GunAttachmentSystem>().attachmentPoints[2].currentAttachment != null)
-        {
-            barrelLocation.position = barrelLocation.position + GetComponentInChildren<GunAttachmentSystem>().attachmentPoints[2].currentAttachment.GetComponent<Mesh>().bounds.size;
-        }
     }
 
     [System.Obsolete]
