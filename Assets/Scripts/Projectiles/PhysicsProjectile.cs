@@ -28,12 +28,16 @@ public class PhysicsProjectile : Projectile
 
     private void OnCollisionEnter(Collision other)
     {
-        ITakeDamage[] damageTakers = other.gameObject.GetComponentsInChildren<ITakeDamage>();
-
-        foreach(var taker in damageTakers)
+        if (!other.gameObject.CompareTag("Weapon"))
         {
-            taker.TakeDamage(weapon, this, transform.position);
+            //Debug.Log($"Bullet collision detected with {other.gameObject.name}");
+            ITakeDamage[] damageTakers = other.gameObject.GetComponentsInChildren<ITakeDamage>();
+
+            foreach (var taker in damageTakers)
+            {
+                taker.TakeDamage(weapon, this, transform.position);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

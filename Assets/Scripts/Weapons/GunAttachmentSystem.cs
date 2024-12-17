@@ -77,7 +77,7 @@ public class GunAttachmentSystem : MonoBehaviour
                 }
                 if (attachmentComponent.attachmentType == Attachment.AttachmentType.Grip)
                 {
-                    grip2.position = attachmentComponent.transform.position;
+                    grip2.position = (attachmentComponent.transform.position - new Vector3(0,0,0));
                     grip2.rotation = attachmentComponent.transform.rotation;
                 }
 

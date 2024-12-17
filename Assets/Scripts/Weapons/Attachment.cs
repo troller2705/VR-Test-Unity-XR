@@ -11,7 +11,7 @@ public class Attachment : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Collision detected with {other.name}");
+        //Debug.Log($"Collision detected with {other.name}");
         GunAttachmentSystem gun = other.GetComponentInParent<GunAttachmentSystem>();
         if (gun != null && !gameObject.GetComponent<XRGrabInteractable>().isSelected)
         {
